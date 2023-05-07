@@ -30,6 +30,11 @@ import java.util.Comparator;
  *
  * @author José Campos
  */
+
+/**
+ * 相当于一个Chromosomes的排序容器
+ * @param <T>
+ */
 public class SortByFitness<T extends Chromosome<T>> implements Comparator<T>, Serializable {
 
     private static final long serialVersionUID = 4982933698286500461L;
@@ -44,11 +49,13 @@ public class SortByFitness<T extends Chromosome<T>> implements Comparator<T>, Se
      */
     public SortByFitness(FitnessFunction<T> ff, boolean desc) {
         this.ff = ff;
+        // 传入的是
         this.order = desc;
     }
 
     @Override
     public int compare(T c1, T c2) {
+        // 不管升序还是降序，排序过程会把null的排到前面
         if (c1 == null)
             return 1;
         else if (c2 == null)

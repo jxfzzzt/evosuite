@@ -54,6 +54,7 @@ public class ArrayStatement extends AbstractStatement {
 
     private static final long serialVersionUID = -2858236370873914156L;
 
+    // 随机一个初始化数组
     private static int[] createRandom(int dimensions) {
         int[] result = new int[dimensions];
         for (int idx = 0; idx < dimensions; idx++) {
@@ -70,8 +71,13 @@ public class ArrayStatement extends AbstractStatement {
      * @param type a {@link java.lang.reflect.Type} object.
      * @return a int.
      */
+    /**
+     * 计算数组的维度，比如 int[]是一维数组，int[][][]是三维数组
+     * @param type
+     * @return
+     */
     public static int determineDimensions(java.lang.reflect.Type type) {
-        String name = type.toString().replace("class", "").trim();
+        String name = type.toString().replace("class", "").trim(); // eg. 二维整形数组 --->  [[I
         int count = 0;
         for (int i = 0; i < name.length(); i++) {
             if (name.charAt(i) == '[') {

@@ -37,6 +37,12 @@ import static java.util.stream.Collectors.averagingDouble;
  *
  * @author Gordon Fraser, Jose Miguel Rojas
  */
+
+/**
+ *
+ * GA算法的染色体抽象类
+ * @param <T>
+ */
 public abstract class Chromosome<T extends Chromosome<T>>
         implements Comparable<T>, Serializable, PublicCloneable<T>, SelfTyped<T> {
 
@@ -322,6 +328,7 @@ public abstract class Chromosome<T extends Chromosome<T>>
      * @param position a int.
      * @throws org.evosuite.ga.ConstructionFailedException if any.
      */
+    // 染色体进行重组函数，生成新的子代个体
     public void crossOver(T other, int position) throws ConstructionFailedException {
         crossOver(other, position, position);
     }
@@ -334,6 +341,7 @@ public abstract class Chromosome<T extends Chromosome<T>>
      * @param position2 a int.
      * @throws org.evosuite.ga.ConstructionFailedException if any.
      */
+    // 染色体进行重组函数，生成新的子代个体
     public abstract void crossOver(T other, int position1, int position2)
             throws ConstructionFailedException;
 
